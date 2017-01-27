@@ -12,6 +12,7 @@ class Post(models.Model):
     subtitle = models.CharField(max_length=50)
     post_content = models.TextField()
     category = models.ForeignKey(Category, on_delete=models.DO_NOTHING)
+    image_url = models.CharField(max_length=200, default='')
     pub_date = models.DateTimeField('date_published')
 
     def __str__(self):
