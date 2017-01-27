@@ -5,7 +5,7 @@ class Category(models.Model):
     category_description = models.CharField(max_length=250)
 
     def __str__(self):
-        return '[category_name] = {0}'.format(self.category_name)
+        return self.category_name
 
 class Post(models.Model):
     title = models.CharField(max_length=25)
@@ -16,7 +16,7 @@ class Post(models.Model):
     pub_date = models.DateTimeField('date_published')
 
     def __str__(self):
-        return '[title] = {0}'.format(self.title)
+        return self.title
 
 class Comment(models.Model):
     comment_text = models.CharField(max_length=200)
@@ -24,4 +24,4 @@ class Comment(models.Model):
     pub_date = models.DateTimeField('date_published')
 
     def __str__(self):
-        return '[comment_text] = {0}'.format(self.comment_text)
+        return self.comment_text
