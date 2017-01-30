@@ -18,6 +18,9 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+    def content_truncate(self):
+        return self.post_content[:250]
+
 class Comment(models.Model):
     comment_text = models.CharField(max_length=200)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
