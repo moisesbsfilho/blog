@@ -7,6 +7,7 @@ The propose of project is to learn about framework and make a functional blog (f
 * Python version 3.5.2
 * Django Framework version 1.10.4
 * SQLite
+* MaterializeCSS
 
 # Configure enviroment
 
