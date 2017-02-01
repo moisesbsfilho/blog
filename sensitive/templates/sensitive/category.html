@@ -1,7 +1,7 @@
 {% extends 'sensitive/base.html' %}
 {% block content %}
 
- {% for post in latest_post_list %}
+ {% for post in posts %}
  <div class="col s8 m12">
     <div class="card horizontal">
       <div class="card-stacked">
@@ -13,12 +13,6 @@
         </div>
         <div class="card-action">
             <small>{{post.pub_date}}</small>
-            <small>
-                <div class="right">
-                    <i class="tiny material-icons">chat_bubble_outline</i>
-                    <span class="disqus-comment-count" data-disqus-identifier="{{post.id}}"></span>
-                </div>
-            </small>
         </div>
       </div>
     </div>

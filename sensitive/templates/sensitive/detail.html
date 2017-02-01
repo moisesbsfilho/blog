@@ -1,2 +1,35 @@
-{{post.post_content}}
+{% extends 'sensitive/base.html' %}
+{% block content %}
+
+<div class="col s8 m12">
+    <div class="row">
+        <img class="responsive-img" src="{{post.image_url}}">
+    </div>
+    <div class="row">
+        <h4>{{post.title}}</h4>
+        <h6>{{post.subtitle}}</h6>
+        <p>{{post.post_content}}</p>
+    </div>
+    <div class="row">
+        <div id="disqus_thread"></div>
+    </div>
+</div>
+
 <a href="{% url 'sensitive:index' %}">Voltar</a>
+<script>
+
+var disqus_config = function () {
+this.page.url = window.location.href;
+this.page.identifier = {{post.id}};
+};
+
+(function() {
+var d = document, s = d.createElement('script');
+s.src = '//sensitive-1.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+{% endblock content %}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'sensitive/css/materialize.css' %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Sensitive - About Everything</title>
+</head>
+<body class="grey lighten-4">
+
+    <nav class="nav-extended white">
+        <div class="nav-wrapper container">
+          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+          <ul id="nav-mobile" class="hide-on-med-and-down">
+              <li>
+                  <a href="{% url 'sensitive:index'%}"><img src="{% static 'sensitive/images/logo.png'%}" style="margin-top: 10px;"></a>
+              </li>
+              {% for category in categories%}
+              <li><a href="{% url 'sensitive:category' category.id %}" class="black-text">{{category.category_name}}</a></li>
+              {% endfor %}
+          </ul>
+          <ul class="side-nav" id="mobile-demo">
+              <li>
+                  <a href="{% url 'sensitive:index'%}">Home</a>
+              </li>
+              {% for category in categories%}
+              <li><a href="{% url 'sensitive:category' category.id %}">{{category.category_name}}</a></li>
+              {% endfor %}
+          </ul>
+            <ul class="right hide-on-med-and-down">
+                <li>
+                    <div class="input-field col s4">
+                        <i class="material-icons prefix black-text">search</i>
+                        <input id="icon_prefix" type="text" class="validate black-text">
+                        <label for="icon_prefix">Search here...</label>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+     <div class="container">
+         <div class="row">
+             <div class="col s12">
+                 <div class="slider">
+                    <ul class="slides">
+                      <li>
+                        <img src="http://lorempixel.com/580/250/nature/1">
+                        <div class="caption center-align">
+                          <h3>Sensitive Blog</h3>
+                          <h5 class="light grey-text text-lighten-3">About everything!</h5>
+                        </div>
+                      </li>
+                      <li>
+                        <img src="http://lorempixel.com/580/250/nature/2">
+                        <div class="caption left-align">
+                          <h3>Sensitive Blog</h3>
+                          <h5 class="light grey-text text-lighten-3">About everything!</h5>
+                        </div>
+                      </li>
+                      <li>
+                        <img src="http://lorempixel.com/580/250/nature/3">
+                        <div class="caption right-align">
+                          <h3>Sensitive Blog</h3>
+                          <h5 class="light grey-text text-lighten-3">About everything!</h5>
+                        </div>
+                      </li>
+                      <li>
+                        <img src="http://lorempixel.com/580/250/nature/4">
+                        <div class="caption center-align">
+                          <h3>This is our big Tagline!</h3>
+                          <h5 class="light grey-text text-lighten-3">About everything!</h5>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+             </div>
+         </div>
+         <div class="row">
+             <div class="col s7">
+                {% block content %}
+                {% endblock %}
+             </div>
+             <div class="col s5">
+                 <div class="col s4 m12">
+                     <ul class="collection">
+                         {% for category in categories%}
+                         <li class="collection-item avatar">
+                             <img src="{{category.image_url}}" class="circle">
+                             <span class="title">{{category.category_name}}</span>
+                             <p>{{category.category_description}}</p>
+                         </li>
+                         {% endfor %}
+                     </ul>
+                  </div>
+             </div>
+         </div>
+     </div>
+
+    <!--JS imports-->
+    <script src="{% static 'sensitive/js/jquery.min.js' %}"></script>
+    <script src="{% static 'sensitive/js/materialize.min.js' %}"></script>
+    <script>
+        $(document).ready(function(){
+          $('.slider').slider();
+        });
+    </script>
+    <script id="dsq-count-scr" src="//sensitive-1.disqus.com/count.js" async></script>
+</body>
+</html>
